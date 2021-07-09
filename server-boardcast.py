@@ -2,18 +2,25 @@ import socket
 import threading
 
 
-def tcplink(sock,addr):
-    while True:  
-        recv_data=sock.recv(buffsize).decode('utf-8')
-        if recv_data=='exit' or not recv_data:
+def keyboard():
+    global sock_l
+    msg = ""
+    while True:
+        msg=input('Please input: ')
+        if not msg:
             break
-        print("form client: " + str(addr) +", data:  " + recv_data)
-        send_data= "from sever: [" + recv_data + "]"
-        sock.send(send_data.encode())
-
-    sock.close()
+        else:
+            for sock in sock_l:
+                sock.send(msg.encode())
+    return
 
 if __name__ == "__main__":
+    global sock_l
+    sock_l = []
+
+    tk=threading.Thread(target=keyboard,args=()) 
+    tk.start()
+
     address='127.0.0.1' 
     port=12344 
     buffsize=1024     
@@ -29,7 +36,7 @@ if __name__ == "__main__":
         # create a new sock for the client
         clientsock,clientaddress=s.accept()
         print("connect to the " + str(ii) + "th client: ",clientaddress)
-        t=threading.Thread(target=tcplink,args=(clientsock,clientaddress)) 
-        t.start()
+        sock_l.append(clientsock)
+
     s.close()
     
