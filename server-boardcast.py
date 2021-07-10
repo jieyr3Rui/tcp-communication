@@ -8,9 +8,10 @@ def keyboard():
     while True:
         msg=input('Please input: ')
         if not msg:
-            break
+            continue
         else:
             for sock in sock_l:
+                print("send")
                 sock.send(msg.encode())
     return
 
@@ -21,7 +22,7 @@ if __name__ == "__main__":
     tk=threading.Thread(target=keyboard,args=()) 
     tk.start()
 
-    address='127.0.0.1' 
+    address='0.0.0.0' 
     port=12344 
     buffsize=1024     
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
