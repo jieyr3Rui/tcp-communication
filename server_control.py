@@ -6,7 +6,7 @@ def keyboard():
     msg = ""
     while True:
         if len(sock_l) > 0:
-            msg=input('Please input: ')
+            msg=raw_input('Please input: ')
             # empty msg
             if not msg:
                 continue
@@ -14,7 +14,7 @@ def keyboard():
             elif msg == "close socket":
                 print("connected sock: ")
                 print(addr_l)
-                index = int(input('Please input remove_index: '))
+                index = int(raw_input('Please input remove_index: '))
                 if index < len(sock_l):
                     sock_l[index].shutdown(socket.SHUT_WR)
                     sock_l[index].close()
@@ -34,7 +34,7 @@ if __name__ == "__main__":
     global sock_l, addr_l
     sock_l = []
     addr_l = []
-    address='localhost' 
+    address='0.0.0.0' 
     port=12344 
     buffsize=1024     
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

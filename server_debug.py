@@ -12,7 +12,7 @@ def tcplink(sock,addr):
     sock.close()
 
 if __name__ == "__main__":
-    address='localhost' 
+    address='0.0.0.0' 
     port=12355  
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.bind((address,port))
