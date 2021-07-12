@@ -1,5 +1,5 @@
 import socket
-host='192.168.1.122'
+host='localhost'
 port=12344
 addr=(host,port)
 tcpCliSock=socket.socket(socket.AF_INET,socket.SOCK_STREAM)

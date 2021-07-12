@@ -2,7 +2,7 @@ import socket
 
 
 if __name__ == "__main__":
-    host='192.168.1.126'
+    host='localhost'
     port=12344
     addr=(host,port)
     tcpCliSock=socket.socket(socket.AF_INET,socket.SOCK_STREAM)
@@ -15,4 +15,3 @@ if __name__ == "__main__":
         recv_data = tcpCliSock.recv(buffsize).decode('utf-8')
         print(recv_data)
 
- 
