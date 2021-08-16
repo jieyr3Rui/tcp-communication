@@ -21,6 +21,9 @@ def keyboard():
                     sock_l.remove(sock_l[index])
                     addr_l.remove(addr_l[index])
                     print("successfully remove socket")
+                elif index == len(sock_l):
+                    sock_l.clear()
+                    print("clear all socket")
                 else:
                     print("cancel remove socket")
             # boardcast msg
